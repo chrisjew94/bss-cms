@@ -1,10 +1,96 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>BSS CMS</title>
-  </head>
-  <body>
-    <h1>Welcome to BSS Client Management System</h1>
-    <p>This is our first test page.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BSS Client Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f9;
+      color: #333;
+    }
+    header {
+      background: #0056b3;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #003d80;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    footer {
+      background: #003d80;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BSS Client Management System 🚀</h1>
+    <p>Welcome to our prototype system, built for Ballarat Support Services</p>
+  </header>
+
+  <nav>
+    <a href="clients.html">Clients</a>
+    <a href="notes.html">Progress Notes</a>
+    <a href="#goals.html">Goals</a>
+    <a href="incidents.html>Incidents</a>
+  </nav>
+
+  <main>
+    <section id="clients">
+      <h2>👥 Clients</h2>
+      <p>This section will allow us to manage participant profiles, personal details, and support plans.</p>
+    </section>
+
+    <section id="notes">
+      <h2>📝 Progress Notes</h2>
+      <p>Support workers will be able to log daily notes directly into the system, keeping everything in one place.</p>
+    </section>
+
+    <section id="goals">
+      <h2>🎯 Goals & Outcomes</h2>
+      <p>Track participant goals, achievements, and progress towards independence.</p>
+    </section>
+
+    <section id="incidents">
+      <h2>⚠️ Incident Reports</h2>
+      <p>Capture and report any incidents with file/photo uploads for compliance and safety.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Ballarat Support Services | Prototype CMS</p>
+  </footer>
+</body>
 </html>
