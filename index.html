@@ -1,96 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BSS Client Management System</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f6f9;
-      color: #333;
-    }
-    header {
-      background: #0056b3;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    nav {
-      background: #003d80;
-      display: flex;
-      justify-content: center;
-      padding: 10px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    section {
-      margin-bottom: 30px;
-      padding: 20px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    footer {
-      background: #003d80;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
+    :root{--primary:#0056b3;--primary-dark:#003d80;--bg:#f4f6f9;--card:#fff;--text:#333}
+    *{box-sizing:border-box}
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+
+    /* Header & Nav */
+    header{background:var(--primary);color:#fff;padding:28px 16px;text-align:center}
+    header .sub{opacity:.9;margin-top:6px}
+    nav{background:var(--primary-dark);display:flex;gap:18px;justify-content:center;padding:10px;position:sticky;top:0;z-index:10}
+    nav a{color:#fff;font-weight:bold;padding:6px 10px;border-radius:6px}
+    nav a:hover{background:rgba(255,255,255,.12)}
+    nav a.active{background:rgba(255,255,255,.2)}
+
+    /* Layout */
+    main{max-width:1000px;margin:24px auto;padding:0 16px}
+    .section{background:var(--card);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);padding:20px;margin-bottom:18px}
+
+    /* Dashboard tiles */
+    .dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .tile{background:var(--card);border-radius:14px;box-shadow:0 3px 10px rgba(0,0,0,.08);padding:26px;text-align:center;font-weight:700}
+    .tile span{display:block;font-size:44px;margin-bottom:10px}
+    .tile:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.12);transition:.18s}
+
+    /* Footer */
+    footer{background:var(--primary-dark);color:#fff;text-align:center;padding:14px;margin-top:26px}
+    .muted{color:#6b7280;font-size:.92rem}
   </style>
 </head>
 <body>
   <header>
-    <h1>BSS Client Management System 🚀</h1>
-    <p>Welcome to our prototype system, built for Ballarat Support Services</p>
+    <h1>BSS Client Management System</h1>
+    <p class="sub">Lean, worker‑friendly CMS inspired by SupportAbility (care modules only)</p>
   </header>
 
   <nav>
+    <a class="active" href="index.html">Home</a>
     <a href="clients.html">Clients</a>
     <a href="notes.html">Progress Notes</a>
-    <a href="#goals.html">Goals</a>
-    <a href="incidents.html>Incidents</a>
+    <a href="goals.html">Goals</a>
+    <a href="incidents.html">Incidents</a>
   </nav>
 
   <main>
-    <section id="clients">
-      <h2>👥 Clients</h2>
-      <p>This section will allow us to manage participant profiles, personal details, and support plans.</p>
-    </section>
+    <div class="section" style="text-align:center">
+      <h2>Dashboard</h2>
+      <p class="muted">Quick links to your core workflows</p>
+    </div>
 
-    <section id="notes">
-      <h2>📝 Progress Notes</h2>
-      <p>Support workers will be able to log daily notes directly into the system, keeping everything in one place.</p>
-    </section>
+    <div class="dashboard">
+      <a class="tile" href="clients.html"><span>👥</span>Clients</a>
+      <a class="tile" href="notes.html"><span>📝</span>Progress Notes</a>
+      <a class="tile" href="goals.html"><span>🎯</span>Goals</a>
+      <a class="tile" href="incidents.html"><span>⚠️</span>Incidents</a>
+    </div>
 
-    <section id="goals">
-      <h2>🎯 Goals & Outcomes</h2>
-      <p>Track participant goals, achievements, and progress towards independence.</p>
-    </section>
-
-    <section id="incidents">
-      <h2>⚠️ Incident Reports</h2>
-      <p>Capture and report any incidents with file/photo uploads for compliance and safety.</p>
-    </section>
+    <div class="section" style="margin-top:18px">
+      <h3>What’s included (prototype)</h3>
+      <ul>
+        <li>Clean navigation and dashboard tiles</li>
+        <li>Separate pages for Clients, Notes, Goals, Incidents (we’ll add them next)</li>
+        <li>Simple, SupportAbility‑style look and feel</li>
+      </ul>
+      <p class="muted">Next we’ll wire these pages to a backend (FastAPI + Postgres) so data saves for real.</p>
+    </div>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Ballarat Support Services | Prototype CMS</p>
-  </footer>
+  <footer>&copy; 2025 Ballarat Support Services | Prototype CMS</footer>
 </body>
 </html>
