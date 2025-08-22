@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Participants — Ballarat Support Services CMS</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* page-specific table helpers (works with or without styles.css) */
+    table{width:100%; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden}
+    thead th{background:#f7f7fb; text-align:left; font-weight:700; padding:12px; border-bottom:1px solid #e5e7eb}
+    tbody td{padding:12px; border-bottom:1px solid #f1f5f9}
+    tr:last-child td{border-bottom:none}
+    .actions{display:flex; flex-wrap:wrap; align-items:center; gap:8px}
+    .btn-sm{background:#0056b3;color:#fff;border:none;padding:8px 10px;border-radius:8px;cursor:pointer}
+    .btn-sm.secondary{background:#6b7280}
+    .search-row{display:flex; gap:10px; margin:10px 0}
+    .search-row input{flex:1; padding:10px; border:1px solid #ddd; border-radius:10px}
+    .status{padding:4px 8px; border-radius:999px; font-size:.82rem; background:#dcfce7; color:#065f46}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Participants</h1>
+    <p class="sub">Search and manage participant records</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a class="active" href="participants.html">Participants</a>
+    <a href="notes.html">Progress Notes</a>
+    <a href="goals.html">Goals</a>
+    <a href="incidents.html">Incidents</a>
+  </nav>
+
+  <main>
+    <div class="section">
+      <div class="search-row">
+        <input id="q" placeholder="Search Participants (name or NDIS number)">
+        <button class="btn" onclick="filter()">Search</button>
+      </div>
+      <div class="muted">
+        Columns: <strong>NDIS Number</strong>, <strong>First Name</strong>,
+        <strong>Last Name</strong>, <strong>Main Worker</strong>, <strong>Status</strong>, <strong>Actions</strong>
+      </div>
+    </div>
+
+    <div class="section" style="padding:0">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:180px">NDIS Number</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Main Worker</th>
+            <th>Status</th>
+            <th style="width:360px">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="rows">
+          <!-- Demo rows – replace with real data later -->
+          <tr data-q="430435994 peter allen lauren active">
+            <td>430435994</td><td>Peter</td><td>Allen</td><td>Lauren Jew</td>
+            <td><span class="status">Active</span></td>
+            <td>
+              <div class="actions">
+                <button class="btn-sm" onclick="location.href='notes.html?ndis=430435994&name=Peter%20Allen'">Add Note</button>
+                <button class="btn-sm" onclick="location.href='incidents.html?ndis=430435994&name=Peter%20Allen'">Add Incident</button>
+                <button class="btn-sm secondary" onclick="location.href='participant.html?ndis=430435994&first=Peter&last=Allen&worker=Lauren%20Jew'">View Participant</button>
+                <button class="btn-sm secondary" onclick="location.href='https://www.google.com/maps/search/?api=1&query=33%20Steamboat%20St%2C%20Ballarat'">Address</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr data-q="432073671 matthew allen lauren active">
+            <td>432073671</td><td>Matthew</td><td>Allen</td><td>Lauren Jew</td>
+            <td><span class="status">Active</span></td>
+            <td>
+              <div class="actions">
+                <button class="btn-sm" onclick="location.href='notes.html?ndis=432073671&name=Matthew%20Allen'">Add Note</button>
+                <button class="btn-sm" onclick="location.href='incidents.html?ndis=432073671&name=Matthew%20Allen'">Add Incident</button>
+                <button class="btn-sm secondary" onclick="location.href='participant.html?ndis=432073671&first=Matthew&last=Allen&worker=Lauren%20Jew'">View Participant</button>
+                <button class="btn-sm secondary" onclick="location.href='#'">Address</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr data-q="430604144 ava bajic lauren active">
+            <td>430604144</td><td>Ava</td><td>Bajic</td><td>Lauren Jew</td>
+            <td><span class="status">Active</span></td>
+            <td>
+              <div class="actions">
+                <button class="btn-sm" onclick="location.href='notes.html?ndis=430604144&name=Ava%20Bajic'">Add Note</button>
+                <button class="btn-sm" onclick="location.href='incidents.html?ndis=430604144&name=Ava%20Bajic'">Add Incident</button>
+                <button class="btn-sm secondary" onclick="location.href='participant.html?ndis=430604144&first=Ava&last=Bajic&worker=Lauren%20Jew'">View Participant</button>
+                <button class="btn-sm secondary" onclick="location.href='#'">Address</button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>&copy; 2025 Ballarat Support Services</footer>
+
+  <script>
+    function filter(){
+      const q=(document.getElementById('q').value||'').toLowerCase().trim();
+      document.querySelectorAll('#rows tr').forEach(tr=>{
+        tr.style.display = tr.dataset.q.includes(q) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
