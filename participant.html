@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Participant — Ballarat Support Services CMS</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tabs{display:flex;flex-wrap:wrap;gap:6px;background:#f7f7fb;border-radius:10px;padding:6px;margin-bottom:14px}
+    .tab{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px 12px;cursor:pointer}
+    .tab.active{background:#0056b3;color:#fff;border-color:#0056b3}
+    .tabpanes>.pane{display:none}
+    .tabpanes>.pane.active{display:block}
+
+    .profile{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    .avatar{width:100%;max-width:260px;aspect-ratio:3/4;border-radius:12px;object-fit:cover;background:#e5e7eb;margin-left:auto}
+    .kv{display:grid;grid-template-columns:180px 1fr;gap:8px}
+    .kv div{padding:6px 0;border-bottom:1px solid #f1f5f9}
+    .kv div:nth-child(2n){border-left:1px dashed #eef2f7;padding-left:10px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:800px){.profile{grid-template-columns:1fr}.avatar{margin:0}}
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden}
+    thead th{background:#f7f7fb;text-align:left;font-weight:700;padding:10px;border-bottom:1px solid #e5e7eb}
+    tbody td{padding:10px;border-bottom:1px solid #f1f5f9}
+    .status-badge{padding:4px 8px;border-radius:999px;font-size:.8rem;background:#dcfce7;color:#065f46}
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="titleName">Participant</h1>
+    <p class="sub">Details, services, documents and notes</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a class="active" href="participants.html">Participants</a>
+    <a href="notes.html">Progress Notes</a>
+    <a href="goals.html">Goals</a>
+    <a href="incidents.html">Incidents</a>
+  </nav>
+
+  <main>
+    <!-- Tabs like SupportAbility -->
+    <div class="tabs">
+      <div class="tab active" data-tab="details">Client Details</div>
+      <div class="tab" data-tab="status">Status</div>
+      <div class="tab" data-tab="contacts">Contacts</div>
+      <div class="tab" data-tab="funding">Funding</div>
+      <div class="tab" data-tab="activities">Activities</div>
+      <div class="tab" data-tab="goals">Goals</div>
+      <div class="tab" data-tab="documents">Documents</div>
+      <div class="tab" data-tab="assessments">Assessments</div>
+      <div class="tab" data-tab="journal">Journal</div>
+    </div>
+
+    <div class="tabpanes">
+      <!-- Client Details -->
+      <div class="pane active" id="pane-details">
+        <div class="section">
+          <div class="profile">
+            <div>
+              <h2 id="displayName">—</h2>
+              <div class="actions">
+                <a class="btn" id="quickNote" href="#">Add Note</a>
+                <a class="btn secondary" id="quickIncident" href="#">Add Incident</a>
+                <a class="btn secondary" id="viewAddress" href="#" target="_blank">View Address</a>
+              </div>
+
+              <div class="kv" style="margin-top:12px">
+                <div><strong>NDIS Number</strong></div><div id="ndis">—</div>
+                <div><strong>Main Worker</strong></div><div id="worker">—</div>
+                <div><strong>Status</strong></div><div><span class="status-badge">Active</span></div>
+                <div><strong>Preferred Name</strong></div><div id="prefName">—</div>
+                <div><strong>Email</strong></div><div id="email">—</div>
+                <div><strong>Mobile</strong></div><div id="mobile">—</div>
+              </div>
+            </div>
+
+            <div>
+              <img id="photo" class="avatar" alt="Participant photo">
+              <p class="muted" style="text-align:right;margin-top:6px">Date of Photo: <span id="photoDate">—</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Address</h3>
+          <div class="form-row">
+            <div><label>Street Address</label><input id="addrStreet" placeholder="10 Cortina Drive"></div>
+            <div><label>Suburb</label><input id="addrSuburb" placeholder="Winter Valley"></div>
+          </div>
+          <div class="form-row">
+            <div><label>State</label><input id="addrState" placeholder="VIC"></div>
+            <div><label>Postcode</label><input id="addrPost" placeholder="3358"></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Client Service Participation</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Site</th>
+                <th>Service</th>
+                <th>Status</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Key Support Worker</th>
+              </tr>
+            </thead>
+            <tbody id="svcRows">
+              <tr>
+                <td>Winter Valley HO</td>
+                <td>Community Access</td>
+                <td><span class="status-badge">Active</span></td>
+                <td>2025-07-16</td>
+                <td>—</td>
+                <td>Rachael Vermeend</td>
+              </tr>
+              <tr>
+                <td>10 Cortina Dr</td>
+                <td>Administration</td>
+                <td class="muted">Exited</td>
+                <td>—</td>
+                <td>—</td>
+                <td>Christopher Jew</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Other tabs (placeholders to match blueprint) -->
+      <div class="pane" id="pane-status">
+        <div class="section"><h3>Status</h3>
+          <div class="form-row">
+            <div><label>Status</label><select><option>Active</option><option>On Hold</option><option>Exited</option></select></div>
+            <div><label>Exit Date</label><input type="date"></div>
+          </div>
+          <label>Notes</label><textarea placeholder="Reason for status change…"></textarea>
+        </div>
+      </div>
+
+      <div class="pane" id="pane-contacts"><div class="section"><h3>Contacts</h3><p class="muted">Primary/secondary contacts, relationships, phone/email.</p></div></div>
+      <div class="pane" id="pane-funding"><div class="section"><h3>Funding</h3><p class="muted">Plan details (Phase 2).</p></div></div>
+      <div class="pane" id="pane-activities"><div class="section"><h3>Activities</h3><p class="muted">Sessions list (optional).</p></div></div>
+      <div class="pane" id="pane-goals"><div class="section"><h3>Goals</h3><p class="muted">Show goals linked from goals.html.</p></div></div>
+      <div class="pane" id="pane-documents"><div class="section"><h3>Documents</h3><p class="muted">Upload & version PDFs (Phase 2).</p></div></div>
+      <div class="pane" id="pane-assessments"><div class="section"><h3>Assessments</h3><p class="muted">Assessment records (Phase 2).</p></div></div>
+      <div class="pane" id="pane-journal"><div class="section"><h3>Journal</h3><p class="muted">Recent notes/incidents for this participant.</p></div></div>
+    </div>
+  </main>
+
+  <footer>&copy; 2025 Ballarat Support Services</footer>
+
+  <script>
+    // Read query params (?ndis=...&first=...&last=...&worker=...)
+    const p = new URLSearchParams(location.search);
+    const ndis   = p.get('ndis')   || '';
+    const first  = p.get('first')  || (p.get('name')?.split(' ')[0] || '');
+    const last   = p.get('last')   || (p.get('name')?.split(' ').slice(1).join(' ') || '');
+    const worker = p.get('worker') || '';
+
+    const fullName = [first,last].filter(Boolean).join(' ') || 'Participant';
+    titleName.textContent   = fullName;
+    displayName.textContent = fullName;
+    document.getElementById('ndis').textContent   = ndis || '—';
+    document.getElementById('worker').textContent = worker || '—';
+    document.getElementById('prefName').textContent = first || '—';
+
+    // Placeholder photo (initials)
+    photo.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&background=0D8ABC&color=fff`;
+    photoDate.textContent = new Date().toLocaleDateString();
+
+    // Quick actions
+    quickNote.href     = `notes.html?ndis=${encodeURIComponent(ndis)}&name=${encodeURIComponent(fullName)}`;
+    quickIncident.href = `incidents.html?ndis=${encodeURIComponent(ndis)}&name=${encodeURIComponent(fullName)}`;
+
+    // Address link
+    function mapsUrl(){
+      const parts = [addrStreet.value, addrSuburb.value, addrState.value, addrPost.value].filter(Boolean).join(' ');
+      return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(parts);
+    }
+    viewAddress.addEventListener('click', (e)=>{ e.preventDefault(); window.open(mapsUrl(), '_blank'); });
+
+    // Tabs
+    document.querySelectorAll('.tab').forEach(t=>{
+      t.addEventListener('click', ()=>{
+        document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+        t.classList.add('active');
+        document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));
+        document.getElementById('pane-'+t.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
